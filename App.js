@@ -1,20 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import Keypad from './Buttons/Keypad';
+import{widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={Styles.container} >
+
+        <View style={Styles.viewBottom}>
+          <Keypad />
+        </View>
+    </SafeAreaView>
+    
   );
 }
 
-const styles = StyleSheet.create({
+
+export const  Styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#D3D3D3',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  viewBottom:{
+    position: 'relative',
+    width: '100%',
+    height: hp(45) ,
+    bottom: 60,
+    display: "flex"
+  }
+  
 });
