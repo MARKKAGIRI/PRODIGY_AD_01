@@ -8,7 +8,7 @@ interface ButtonProps {
     isGray: boolean;
 }
 
-export default function Button({title, onPress, isBlue, isGray} : ButtonProps) {
+export default function Button({title, onpress, isBlue, isGray} : ButtonProps) {
     return(
         <TouchableOpacity 
             style={
@@ -18,7 +18,7 @@ export default function Button({title, onPress, isBlue, isGray} : ButtonProps) {
                 ?Styles.btnGray
                 :Styles.btnWhite
             }
-            onPress={onPress}>
+            onPress={onpress}>
                 <Text style={Styles.btnText}>{title}</Text>
         </TouchableOpacity>
     )
@@ -29,11 +29,10 @@ export const  Styles = StyleSheet.create({
         width: 72,
         height: 72,
         borderRadius: 24,
-        backgroundColor: "blue",
+        backgroundColor: "#89CFF0",
         justifyContent: "center",
         alignItems: "center",
-        marginVertical: 2
-
+        
     },
     btnGray:{
         width: 72,

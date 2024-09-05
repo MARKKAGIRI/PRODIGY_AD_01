@@ -50,13 +50,17 @@ export default function Keypad(){
                 clear();
                 setResult(parseInt(SecondNumber) / parseInt(FirstNumber));
                 break;
-            case 'x':
+            case '*':
                 clear();
                 setResult(parseInt(SecondNumber) * parseInt(FirstNumber));
                 break;
             case '%': 
                 clear;
-                setResult((parseInt(SecondNumber)/100) * parseInt(FirstNumber))
+                setResult(((parseInt(SecondNumber) / 100) * parseInt(FirstNumber)) )
+            case '.':
+                clear;
+                setSecondNumber(FirstNumber + '.')
+                setResult(parseInt(SecondNumber + FirstNumber))
             default:
                 clear();
                 setResult(0);
@@ -64,9 +68,10 @@ export default function Keypad(){
         }
     }
 
+    /** to display the result and the first number based on its size */
     const firstNumberDisplay = () =>{
         if(Result != null){
-            return(<Text style={Result < 5 ? [Styles.screenFirstNumber, {color: 'grey'}] : [Styles.screenFirstNumber, {fontSize:50, color: 'grey'}] }>
+            return(<Text style={Result.toString().length < 5 ? [Styles.screenFirstNumber, {color: 'grey'}] : [Styles.screenFirstNumber, {fontSize:50, color: 'grey'}] }>
                 {Result.toString()}
             </Text>)
         }
@@ -76,11 +81,13 @@ export default function Keypad(){
         if(FirstNumber === ""){
             return <Text style={Styles.screenFirstNumber}>{"0"}</Text>
         }
+        /**changes size of first number when it exceeds 5 characters */
         if(FirstNumber.length > 5 && FirstNumber.length < 8){
             return(
              <Text style={[Styles.screenFirstNumber, {fontSize:70}]}>{FirstNumber}</Text>
             )
         }
+        /** reducing size after exceeding 7 characters */
         if(FirstNumber.length > 7){
             return <Text style={[Styles.screenFirstNumber, {fontSize:50}]}>{FirstNumber}</Text>
         }
@@ -100,7 +107,7 @@ export default function Keypad(){
            {firstNumberDisplay()}
         </View>
         <View style={Styles.row}>
-            <Button isGray title="AC" onpress={() => { clear; } } isBlue={false} />
+            <Button isGray title="AC" onpress={() => {clear()} } isBlue={false} />
             <Button isGray title="+/-" onpress={() => { handleOperationpress("+/-"); } } isBlue={false} />
             <Button isGray title="%" onpress={() => { handleOperationpress("%"); } } isBlue={false} />
             <Button isBlue title="/" onpress={() => { handleOperationpress("/"); } } isGray={false} />
