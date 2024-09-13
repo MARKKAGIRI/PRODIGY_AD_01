@@ -56,7 +56,7 @@ export default function Keypad(){
                 break;
             case '%': 
                 clear;
-                setResult(((parseInt(SecondNumber) / 100) * parseInt(FirstNumber)) )
+                setResult(((parseInt(SecondNumber)/100) * parseInt(FirstNumber)) )
             case '.':
                 clear;
                 setSecondNumber(FirstNumber + '.')
@@ -96,22 +96,20 @@ export default function Keypad(){
         <>
         <View
             style={{
-                height: 120,
-                width: "90%",
+                maxHeight: "100%",
+                width: "100%",
                 justifyContent: "flex-end",
-                alignSelf: "center"
+                alignSelf: "flex-start",
+                borderWidth: 2,
+                bottom: 15,
+                backgroundColor: '#FDF6E4'
             }}
         >
            <Text style={Styles.screenSecondNumber}>{SecondNumber}</Text>
            <Text style={{color: 'purple', fontSize: 50, fontWeight:'500'}}>{Operation}</Text>
            {firstNumberDisplay()}
         </View>
-        <View style={Styles.row}>
-            <Button isGray title="AC" onpress={() => {clear()} } isBlue={false} />
-            <Button isGray title="+/-" onpress={() => { handleOperationpress("+/-"); } } isBlue={false} />
-            <Button isGray title="%" onpress={() => { handleOperationpress("%"); } } isBlue={false} />
-            <Button isBlue title="/" onpress={() => { handleOperationpress("/"); } } isGray={false} />
-        </View>
+        
         <View style={Styles.row}>
             <Button title="7" onpress={() => { handleNumberpress("7"); } } isBlue={false} isGray={false} />
             <Button title="8" onpress={() => { handleNumberpress("8"); } } isBlue={false} isGray={false} />
@@ -131,10 +129,10 @@ export default function Keypad(){
             <Button isBlue title="+" onpress={() => { handleOperationpress("+"); } } isGray={false} />
         </View>
         <View style={Styles.row}>
+            <Button isGray title="AC" onpress={() => {clear()} } isBlue={false} />
             <Button title="0" onpress={() => { handleNumberpress("0"); } } isBlue={false} isGray={false} />
-            <Button title="." onpress={() => { handleOperationpress("."); } } isBlue={false} isGray={false} />
-            <Button title="DEL" onpress={() => { setFirstNumber(FirstNumber.slice(0, -1)); } } isBlue={false} isGray={false}/>
             <Button isBlue title="=" onpress={() => { getResult(); } } isGray={false} />
+            <Button isBlue title="/" onpress={() => { handleOperationpress("/"); } } isGray={false} />
         </View>
         </>
     )
@@ -157,5 +155,12 @@ export const Styles = StyleSheet.create({
         color: "gray",
         fontWeight: '200',
         alignSelf: "flex-end"
+    },
+    WorkingArea:{
+        borderWidth: 2,
+        height: "60%",
+        position: "absolute",
+        width: "100%",
+        backgroundColor: 'white'
     }
 });
