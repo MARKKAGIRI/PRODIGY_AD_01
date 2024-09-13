@@ -100,9 +100,7 @@ export default function Keypad(){
                 width: "100%",
                 justifyContent: "flex-end",
                 alignSelf: "flex-start",
-                borderWidth: 2,
                 bottom: 15,
-                backgroundColor: '#FDF6E4'
             }}
         >
            <Text style={Styles.screenSecondNumber}>{SecondNumber}</Text>
